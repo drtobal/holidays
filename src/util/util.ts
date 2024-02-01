@@ -30,7 +30,7 @@ export const isDateMayor = (a: Date, b: Date): boolean => {
 export const getLeftDays = (holidays: Holiday[], date: Date): Holiday[] => {
     const year = date.getFullYear();
     return holidays.filter(holiday => {
-        if (!holiday.computedDate ||
+        if (!holiday.computedDate || holiday.location ||
             holiday.computedDate.getFullYear() !== year ||
             !isDateMayor(holiday.computedDate, date)) {
             return false;
