@@ -39,17 +39,20 @@ export default function Home(props: Props) {
   return (
     <>
       <div className="container mx-auto">
-        <h1 className="mt-5">Feriados de Chile, {props.year | DEFAULT_YEAR}</h1>
-        <p className="mb-3 text-sm">{getLeftDaysLabel(leftDays, weekDays)}</p>
+        <div className="container mx-auto max-w-4xl">
+          <h1 className="mt-7">Feriados de Chile, {props.year | DEFAULT_YEAR}</h1>
+          <p className="text-sm mb-2">{getLeftDaysLabel(leftDays, weekDays)}</p>
+          <p className="mb-5 text-sm">
+            {leftDays.length > 0 ? <p className="mb-3 text-sm">
+              Próximo feriado: <span className="font-bold">{leftDays[0].name}</span>
+              {leftDays[0].computedDate ?
+                <>, dentro de {formatDistanceToNowStrict(leftDays[0].computedDate, { locale, unit: 'day' })}</> : <></>}
+            </p> : <></>}
+          </p>
+        </div>
         <div className="grid grid-cols-2 gap-4 mt-4">
-          <div>
-            <HolidayList holidays={holidays.filter(h => !h.location)}>
-              {leftDays.length > 0 ? <p className="mb-3 text-sm">
-                Próximo feriado: <span className="font-bold">{leftDays[0].name}</span>
-                {leftDays[0].computedDate ?
-                  <>, dentro de {formatDistanceToNowStrict(leftDays[0].computedDate, { locale, unit: 'day' })}</> : <></>}
-              </p> : <></>}
-            </HolidayList>
+          <div className="flex flex-col items-end">
+            <HolidayList holidays={holidays.filter(h => !h.location)} />
 
             <HolidayList holidays={holidays.filter(h => h.location)}>
               <h1 className="mt-5">Feriados específicos</h1>
@@ -57,7 +60,7 @@ export default function Home(props: Props) {
             </HolidayList>
           </div>
           <div className="flex flex-col">
-            <Months holidays={holidays} />
+            <Months holidays={holidays} year={props.year} />
           </div>
         </div>
       </div>

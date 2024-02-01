@@ -1,4 +1,4 @@
-import { parse, isValid, Month } from "date-fns";
+import { parse, isValid } from "date-fns";
 import { Holiday, RawHoliday, AvailableYear } from "@/types";
 
 // implement 2025
@@ -68,21 +68,4 @@ export const getLeftDaysLabel = (leftDays: Holiday[], weekDays: Holiday[]): stri
         }
     }
     return text;
-}
-
-export const getMonthDates = (): Date[] => {
-    console.log('getMonthDates');
-    return Array.from(Array(12).keys()).map(month => startOfMonth(month as Month));
-}
-
-export const startOfMonth = (month: Month): Date => {
-    const date = new Date();
-    date.setMonth(month);
-    date.setDate(1);
-    date.setHours(0);
-    date.setMinutes(0);
-    date.setSeconds(0);
-    date.setMilliseconds(0);
-    console.log(date.toISOString());
-    return date;
 }

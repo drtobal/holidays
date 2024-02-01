@@ -1,10 +1,11 @@
+'use client'
+
 import { Holiday, ReachChild } from "@/types";
 import { getHolidayKindLabel } from "@/util/labels";
 import { format, formatDistanceToNowStrict } from "date-fns";
 import { es as locale } from 'date-fns/locale/es';
 import { isDateMayor, isWeekDay } from "@/util/util";
 import { TODAY } from "@/constants";
-import { useRef } from "react";
 
 type Props = {
     holidays: Holiday[],
@@ -12,12 +13,12 @@ type Props = {
 };
 
 export default function HolidayList(props: Props) {
-    const printedToday = useRef<boolean>(false);
+    let printedToday = false;
 
     const labels = (holiday: Holiday): ReachChild => {
         if (holiday.labels && holiday.labels.length > 0) {
             return holiday.labels.map((label, k) => {
-                return <span className="whitespace-nowrap bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full flex items-center" key={k}>
+                return <span key={k} className="whitespace-nowrap bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full flex items-center">
                     {label}
                 </span>;
             });
@@ -38,11 +39,11 @@ export default function HolidayList(props: Props) {
     };
 
     const today = (holiday: Holiday): ReachChild => {
-        if (!printedToday.current && holiday.computedDate && isDateMayor(holiday.computedDate, TODAY)) {
-            printedToday.current = true;
-            return <li className="py-2 px-4 bg-teal-100">
+        if (!printedToday && holiday.computedDate && isDateMayor(holiday.computedDate, TODAY)) {
+            printedToday = true;
+            return <div className="py-2 px-4 bg-teal-100">
                 <p className="text-center">👉 Hoy 👈</p>
-            </li>;
+            </div>;
         }
         return <></>;
     }
@@ -51,11 +52,11 @@ export default function HolidayList(props: Props) {
 
         {props.children ? props.children : <></>}
 
-        <ul className="divide-y divide-gray-200 bg-white dark:divide-gray-700 mx-auto rounded-md py-4 shadow-lg">
+        <div className="divide-y divide-gray-200 bg-white dark:divide-gray-700 mx-auto rounded-md py-4 shadow-lg">
             {props.holidays.map((holiday, k) =>
-                <>
+                <div key={k}>
                     {today(holiday)}
-                    <li key={k} className={`py-2 px-4 ${isWeekDay(holiday) ? 'bg-lime-50' : ''}`}>
+                    <div className={`py-2 px-4 ${isWeekDay(holiday) ? 'bg-lime-50' : ''}`}>
                         <div className="flex items-start space-x-4 rtl:space-x-reverse">
                             <div className="flex-1 min-w-0 gap-1">
                                 <p className="text-sm font-medium text-gray-900">
@@ -76,9 +77,9 @@ export default function HolidayList(props: Props) {
                                 {date(holiday)}
                             </div>
                         </div>
-                    </li>
-                </>
+                    </div>
+                </div>
             )}
-        </ul>
+        </div>
     </div>;
 }
