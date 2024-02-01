@@ -66,13 +66,13 @@ export default function Home(props: Props = { year: CURRENT_YEAR }) {
               <p className="mb-3 text-sm">(Aplican a un grupo de personas o región)</p>
             </HolidayList>
           </div>
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col">
             <Months holidays={holidays} year={props.year} />
 
             {!props.year || props.year === CURRENT_YEAR ?
-              <Link href="/2025" className="max-w-md mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">
+              <Link href="/2025" className="max-w-md mt-4 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:w-auto">
                 Ver 2025
-              </Link> : <Link href="/" className="max-w-md mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">
+              </Link> : <Link href="/" className="max-w-md mt-4 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:w-auto">
                 Ver año actual
               </Link>}
           </div>

@@ -75,3 +75,9 @@ export const getLeftDaysLabel = (leftDays: Holiday[], weekDays: Holiday[], year:
     }
     return text;
 }
+
+export const preventClickDefault = (event: MouseEvent): void => {
+    event.preventDefault();
+    event.stopImmediatePropagation && event.stopImmediatePropagation();
+    event.stopPropagation();
+}
