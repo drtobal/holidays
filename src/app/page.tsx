@@ -8,7 +8,8 @@ import { DEFAULT_YEAR, TODAY } from "@/constants";
 import Footer from "./../components/footer";
 import Months from "./../components/months";
 import { formatDistanceToNowStrict } from "date-fns";
-import { es as locale } from 'date-fns/locale/es';
+import { es as locale } from "date-fns/locale/es";
+import Link from "next/link";
 
 type Props = {
   year: AvailableYear,
@@ -27,7 +28,7 @@ export default function Home(props: Props) {
     (async (): Promise<void> => {
       if (!initialized.current) {
         initialized.current = true;
-        const days = await getDates(props.year | DEFAULT_YEAR);
+        const days = await getDates(props.year || DEFAULT_YEAR);
         const leftDays = getLeftDays(days, TODAY);
         setHolidays(days);
         setLeftDays(leftDays);
@@ -38,19 +39,19 @@ export default function Home(props: Props) {
 
   return (
     <>
-      <div className="container mx-auto">
+      <div className="container mx-auto px-4">
         <div className="container mx-auto max-w-4xl">
-          <h1 className="mt-7">Feriados de Chile, {props.year | DEFAULT_YEAR}</h1>
+          <h1 className="mt-7">Feriados de Chile, {props.year || DEFAULT_YEAR}</h1>
           <p className="text-sm mb-2">{getLeftDaysLabel(leftDays, weekDays)}</p>
           <p className="mb-5 text-sm">
-            {leftDays.length > 0 ? <p className="mb-3 text-sm">
+            {leftDays.length > 0 ? <span className="mb-3 text-sm">
               Próximo feriado: <span className="font-bold">{leftDays[0].name}</span>
               {leftDays[0].computedDate ?
                 <>, dentro de {formatDistanceToNowStrict(leftDays[0].computedDate, { locale, unit: 'day' })}</> : <></>}
-            </p> : <></>}
+            </span> : <></>}
           </p>
         </div>
-        <div className="grid grid-cols-2 gap-4 mt-4">
+        <div className="grid md:grid-cols-2 gap-4 mt-4">
           <div className="flex flex-col items-end">
             <HolidayList holidays={holidays.filter(h => !h.location)} />
 
@@ -59,8 +60,13 @@ export default function Home(props: Props) {
               <p className="mb-3 text-sm">(Aplican a un grupo de personas o región)</p>
             </HolidayList>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col gap-4">
             <Months holidays={holidays} year={props.year} />
+
+            {!props.year || props.year === DEFAULT_YEAR ?
+              <Link href="/2025" className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">
+                Ver 2025
+              </Link> : <></>}
           </div>
         </div>
       </div>

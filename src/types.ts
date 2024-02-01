@@ -25,3 +25,11 @@ export type FooterLink = {
     label: string;
     url: string;
 };
+
+export type CalendarDate = {
+    date: Date;
+    holiday?: Holiday;
+    isToday?: boolean;
+    isPast?: boolean;
+    isLocalized?: boolean;
+};
