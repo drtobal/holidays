@@ -2,19 +2,21 @@
 
 import { Holiday, ReachChild } from "@/types";
 import { isDateMayor } from "@/util/util";
-import { TODAY } from "@/constants";
+import { CURRENT_YEAR, TODAY } from "@/constants";
 import HolidayComponent from "./holiday";
+import { AvailableYear } from "@/types";
 
 type Props = {
     holidays: Holiday[],
     children?: ReachChild,
+    year: AvailableYear,
 };
 
 export default function HolidayList(props: Props) {
     let printedToday = false;
 
     const today = (holiday: Holiday): ReachChild => {
-        if (!printedToday && holiday.computedDate && isDateMayor(holiday.computedDate, TODAY)) {
+        if (props.year === CURRENT_YEAR && !printedToday && holiday.computedDate && isDateMayor(holiday.computedDate, TODAY)) {
             printedToday = true;
             return <div className="py-2 px-4 bg-teal-100">
                 <p className="text-center">👉 Hoy 👈</p>

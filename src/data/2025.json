@@ -1,8 +1,157 @@
 [
     {
-        "name": "Día Domingo de 2025",
+        "name": "Día Domingo",
         "type": "civil",
         "law": "Ley 2.977",
         "date": "Todos los Días Domingos"
+    },
+    {
+        "name": "Año Nuevo",
+        "type": "civil",
+        "law": "Ley 2.977, Ley 19.973",
+        "date": "2025-01-01",
+        "inalienable": true
+    },
+    {
+        "name": "Viernes Santo",
+        "type": "religious",
+        "law": "Ley 2.977",
+        "date": "2025-04-18"
+    },
+    {
+        "name": "Sábado Santo",
+        "type": "religious",
+        "law": "Ley 2.977",
+        "date": "2025-04-19"
+    },
+    {
+        "name": "Día Nacional del Trabajo",
+        "type": "civil",
+        "law": "Código del Trabajo, Ley 19.973",
+        "date": "2025-05-01",
+        "inalienable": true
+    },
+    {
+        "name": "Día de las Glorias Navales",
+        "type": "civil",
+        "law": "Ley 2.977",
+        "date": "2025-05-21"
+    },
+    {
+        "name": "Día Nacional de los Pueblos Indígenas",
+        "type": "civil",
+        "law": "Ley 21.357",
+        "date": "2025-06-20"
+    },
+    {
+        "name": "San Pedro y San Pablo",
+        "type": "religious",
+        "law": "Ley 2.977, Ley 18.432, Ley 19.668",
+        "date": "2025-06-29"
+    },
+    {
+        "name": "Elecciones Primarias Presidenciales y Parlamentarias",
+        "labels": [
+            "Por Confirmar"
+        ],
+        "type": "civil",
+        "law": "Ley 18.700, Ley 19.973, Ley 20.640",
+        "date": "2025-06-29",
+        "inalienable": true
+    },
+    {
+        "name": "Día de la Virgen del Carmen",
+        "type": "religious",
+        "law": "Ley 20.148",
+        "date": "2025-07-16"
+    },
+    {
+        "name": "Asunción de la Virgen",
+        "type": "religious",
+        "law": "Ley 2.977",
+        "date": "2025-07-15"
+    },
+    {
+        "name": "Independencia Nacional",
+        "type": "civil",
+        "law": "Ley 2.977, Ley 19.973",
+        "date": "2025-09-18",
+        "inalienable": true
+    },
+    {
+        "name": "Día de las Glorias del Ejército",
+        "type": "civil",
+        "law": "Ley 2.977, Ley 20.629",
+        "date": "2025-09-19",
+        "inalienable": true
+    },
+    {
+        "name": "Encuentro de Dos Mundos",
+        "type": "civil",
+        "law": "Ley 3.810, Ley 19.668",
+        "date": "2025-10-12"
+    },
+    {
+        "name": "Día de las Iglesias Evangélicas y Protestantes",
+        "type": "religious",
+        "law": "Ley 20.299",
+        "date": "2025-10-31"
+    },
+    {
+        "name": "Día de Todos los Santos",
+        "type": "religious",
+        "law": "Ley 2.977",
+        "date": "2025-11-01"
+    },
+    {
+        "name": "Elecciones Presidenciales y Parlamentarias",
+        "type": "civil",
+        "law": "Ley 18.700, Ley 19.973, Ley 20.515, Ley 21.073",
+        "date": "2025-11-16",
+        "inalienable": true
+    },
+    {
+        "name": "Inmaculada Concepción",
+        "type": "religious",
+        "law": "Ley 2.977",
+        "date": "2025-12-08"
+    },
+    {
+        "name": "Elecciones Presidenciales (Segunda Vuelta)",
+        "labels": [
+            "Por Confirmar"
+        ],
+        "type": "civil",
+        "law": "Ley 18.700, Ley 19.973, Ley 20.515",
+        "date": "2025-12-14",
+        "inalienable": true
+    },
+    {
+        "name": "Navidad",
+        "type": "religious",
+        "law": "Ley 2.977, Ley 19.973",
+        "date": "2025-12-25",
+        "inalienable": true
+    },
+    {
+        "name": "Asalto y Toma del Morro de Arica",
+        "type": "location",
+        "law": "Ley 20.663",
+        "date": "2025-06-07",
+        "location": "Región de Arica y Parinacota"
+    },
+    {
+        "name": "Nacimiento del Prócer de la Independencia",
+        "type": "location",
+        "law": "Ley 16.535, Ley 20.768",
+        "date": "2025-08-20",
+        "location": "Comunas de Chillán y Chillán Viejo"
+    },
+    {
+        "name": "Feriado Bancario",
+        "type": "location",
+        "law": "Ley General de Bancos",
+        "date": "2025-12-31",
+        "location": "Trabajadores de Instituciones Bancarias"
     }
 ]

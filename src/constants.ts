@@ -2,7 +2,7 @@ import { FooterLink } from "./types";
 
 export const TODAY = new Date();
 
-export const DEFAULT_YEAR = 2024;
+export const CURRENT_YEAR = 2024;
 
 export const FOOTER_LINKS: FooterLink[] = [
     { label: 'LinkedIn', url: 'https://www.linkedin.com/in/cristobal-diaz-alvarez/' },

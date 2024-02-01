@@ -1,5 +1,6 @@
 import { parse, isValid } from "date-fns";
 import { Holiday, RawHoliday, AvailableYear } from "@/types";
+import { CURRENT_YEAR } from "@/constants";
 
 // implement 2025
 export const getDates = async (year: AvailableYear = 2024): Promise<Holiday[]> => {
@@ -45,18 +46,23 @@ export const getWeekDays = (holidays: Holiday[]): Holiday[] => {
 }
 
 export const isWeekDay = (holiday: Holiday): boolean => {
-    return holiday.computedDate && holiday.computedDate.getDay() % 6 !== 0;
+    return !!(holiday.computedDate && holiday.computedDate.getDay() % 6 !== 0);
 }
 
-export const getLeftDaysLabel = (leftDays: Holiday[], weekDays: Holiday[]): string => {
+export const getLeftDaysLabel = (leftDays: Holiday[], weekDays: Holiday[], year: number): string => {
+    const isSameYear = year === CURRENT_YEAR;
     const leftDaysCount = leftDays.length;
     const weekDaysCount = weekDays.length;
     let text: string = '';
     if (leftDaysCount > 0) {
         if (leftDaysCount > 1) {
-            text += `Quedan ${leftDays.length} días feriados este año 🤭`;
+            if (isSameYear) {
+                text += `Quedan ${leftDays.length} días feriados este año 🤭`;
+            } else {
+                text += `El año ${year} tendrá ${leftDays.length} días feriados 🤭`;
+            }
         } else {
-            text += `Quedan 1 día feriados este año 🤭`;
+            text += `Queda 1 día feriado este año 🤭`;
         }
     }
 

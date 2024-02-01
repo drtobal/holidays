@@ -5,7 +5,7 @@ import { getMonthCalendar, getMonthsDates, MONTHS } from "@/util/month";
 import { useState } from "react";
 import { format } from "date-fns";
 import { es as locale } from "date-fns/locale/es";
-import { DEFAULT_YEAR, TODAY } from "@/constants";
+import { CURRENT_YEAR, TODAY } from "@/constants";
 import HolidayComponent from "./holiday";
 
 type Props = {
@@ -14,7 +14,7 @@ type Props = {
 }
 
 export default function Months(props: Props) {
-    const [months, setMonths] = useState<Date[]>(getMonthsDates(MONTHS, props.year || DEFAULT_YEAR));
+    const [months, setMonths] = useState<Date[]>(getMonthsDates(MONTHS, props.year || CURRENT_YEAR));
 
     const [activeHoliday, setActiveHoliday] = useState<Holiday | null>(null);
 
