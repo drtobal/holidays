@@ -1,0 +1,163 @@
+[
+    {
+        "name": "Día Domingo",
+        "type": "civil",
+        "law": "Ley 2.977",
+        "date": "Todos los Días Domingos"
+    },
+    {
+        "name": "Año Nuevo",
+        "type": "civil",
+        "law": "Ley 2.977, Ley 19.973",
+        "date": "2024-01-01",
+        "inalienable": true
+    },
+    {
+        "name": "Viernes Santo",
+        "type": "religious",
+        "law": "Ley 2.977",
+        "date": "2024-03-29"
+    },
+    {
+        "name": "Sábado Santo",
+        "type": "religious",
+        "law": "Ley 2.977",
+        "date": "2024-03-30"
+    },
+    {
+        "name": "Día Nacional del Trabajo",
+        "type": "civil",
+        "law": "Código del Trabajo, Ley 19.973",
+        "date": "2024-05-01",
+        "inalienable": true
+    },
+    {
+        "name": "Día de las Glorias Navales",
+        "type": "civil",
+        "law": "Ley 2.977",
+        "date": "2024-05-21"
+    },
+    {
+        "name": "Elecciones Primarias Alcaldes y Gobernadores",
+        "labels": [
+            "Por Confirmar"
+        ],
+        "type": "civil",
+        "law": "Ley 18.700, Ley 19.973",
+        "date": "2024-06-09",
+        "inalienable": true
+    },
+    {
+        "name": "Día Nacional de los Pueblos Indígenas",
+        "type": "civil",
+        "law": "Ley 21.357",
+        "date": "2024-06-20"
+    },
+    {
+        "name": "San Pedro y San Pablo",
+        "type": "religious",
+        "law": "Ley 2.977, Ley 18.432, Ley 19.668",
+        "date": "2024-06-29"
+    },
+    {
+        "name": "Día de la Virgen del Carmen",
+        "type": "religious",
+        "law": "Ley 20.148",
+        "date": "2024-07-16"
+    },
+    {
+        "name": "Asunción de la Virgen",
+        "type": "religious",
+        "law": "Ley 2.977",
+        "date": "2024-08-15"
+    },
+    {
+        "name": "Independencia Nacional",
+        "type": "civil",
+        "law": "Ley 2.977, Ley 19.973",
+        "date": "2024-09-18",
+        "inalienable": true
+    },
+    {
+        "name": "Día de las Glorias del Ejército",
+        "type": "civil",
+        "law": "Ley 2.977, Ley 20.629",
+        "date": "2024-09-19",
+        "inalienable": true
+    },
+    {
+        "name": "Feriado Adicional Fiestas Patrias",
+        "type": "civil",
+        "law": "Ley 20.215",
+        "date": "2024-09-20"
+    },
+    {
+        "name": "Encuentro de Dos Mundos",
+        "type": "civil",
+        "law": "Ley 3.810, Ley 19.668",
+        "date": "2024-10-12"
+    },
+    {
+        "name": "Elecciones Municipales, Consejeros Regionales y Gobernadores Regionales",
+        "type": "civil",
+        "law": "Ley 18.700, Ley 19.973",
+        "date": "2024-10-12",
+        "inalienable": true
+    },
+    {
+        "name": "Día de las Iglesias Evangélicas y Protestantes",
+        "type": "religious",
+        "law": "Ley 20.299",
+        "date": "2024-10-31"
+    },
+    {
+        "name": "Día de Todos los Santos",
+        "type": "religious",
+        "law": "Ley 2.977",
+        "date": "2024-11-01"
+    },
+    {
+        "name": "Segunda Vuelta Elección Gobernadores Regionales",
+        "labels": [
+            "Por Confirmar"
+        ],
+        "type": "civil",
+        "law": "Ley 18.700, Ley 19.973",
+        "date": "2024-11-24",
+        "inalienable": true
+    },
+    {
+        "name": "Inmaculada Concepción",
+        "type": "religious",
+        "law": "Ley 2.977",
+        "date": "2024-12-08"
+    },
+    {
+        "name": "Navidad",
+        "type": "religious",
+        "law": "Ley 2.977, Ley 19.973",
+        "date": "2024-12-25",
+        "inalienable": true
+    },
+    {
+        "name": "Asalto y Toma del Morro de Arica",
+        "type": "location",
+        "law": "Ley 20.663",
+        "date": "2024-06-07",
+        "location": "Región de Arica y Parinacota"
+    },
+    {
+        "name": "Nacimiento del Prócer de la Independencia",
+        "type": "location",
+        "law": "Ley 16.535, Ley 20.768",
+        "date": "2024-08-20",
+        "location": "Comunas de Chillán y Chillán Viejo"
+    },
+    {
+        "name": "Feriado Bancario",
+        "type": "location",
+        "law": "Ley General de Bancos",
+        "date": "2024-12-31",
+        "location": "Trabajadores de Instituciones Bancarias"
+    }
+]
