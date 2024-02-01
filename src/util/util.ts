@@ -1,6 +1,5 @@
-import { parse, isValid } from "date-fns";
+import { parse, isValid, Month } from "date-fns";
 import { Holiday, RawHoliday, AvailableYear } from "@/types";
-import HolidayList from "@/components/holidays-list";
 
 // implement 2025
 export const getDates = async (year: AvailableYear = 2024): Promise<Holiday[]> => {
@@ -54,19 +53,36 @@ export const getLeftDaysLabel = (leftDays: Holiday[], weekDays: Holiday[]): stri
     const weekDaysCount = weekDays.length;
     let text: string = '';
     if (leftDaysCount > 0) {
-      if (leftDaysCount > 1) {
-        text += `Quedan ${leftDays.length} días feriados este año 🤭`;
-      } else {
-        text += `Quedan 1 día feriados este año 🤭`;
-      }
+        if (leftDaysCount > 1) {
+            text += `Quedan ${leftDays.length} días feriados este año 🤭`;
+        } else {
+            text += `Quedan 1 día feriados este año 🤭`;
+        }
     }
 
     if (weekDaysCount > 0) {
-      if (weekDaysCount > 1) {
-        text += `, ${weekDays.length} son días de semana 🥳🥳🥳`;
-      } else {
-        text += `, un día de semana 🥳🥳🥳`;
-      }
+        if (weekDaysCount > 1) {
+            text += `, ${weekDays.length} son días de semana 🥳🥳🥳`;
+        } else {
+            text += `, un día de semana 🥳🥳🥳`;
+        }
     }
     return text;
-  }
+}
+
+export const getMonthDates = (): Date[] => {
+    console.log('getMonthDates');
+    return Array.from(Array(12).keys()).map(month => startOfMonth(month as Month));
+}
+
+export const startOfMonth = (month: Month): Date => {
+    const date = new Date();
+    date.setMonth(month);
+    date.setDate(1);
+    date.setHours(0);
+    date.setMinutes(0);
+    date.setSeconds(0);
+    date.setMilliseconds(0);
+    console.log(date.toISOString());
+    return date;
+}

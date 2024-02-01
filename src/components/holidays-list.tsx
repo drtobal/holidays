@@ -4,6 +4,7 @@ import { format, formatDistanceToNowStrict } from "date-fns";
 import { es as locale } from 'date-fns/locale/es';
 import { isDateMayor, isWeekDay } from "@/util/util";
 import { TODAY } from "@/constants";
+import { useRef } from "react";
 
 type Props = {
     holidays: Holiday[],
@@ -11,7 +12,7 @@ type Props = {
 };
 
 export default function HolidayList(props: Props) {
-    let printedToday: boolean = false;
+    const printedToday = useRef<boolean>(false);
 
     const labels = (holiday: Holiday): ReachChild => {
         if (holiday.labels && holiday.labels.length > 0) {
@@ -37,8 +38,8 @@ export default function HolidayList(props: Props) {
     };
 
     const today = (holiday: Holiday): ReachChild => {
-        if (!printedToday && holiday.computedDate && isDateMayor(holiday.computedDate, TODAY)) {
-            printedToday = true;
+        if (!printedToday.current && holiday.computedDate && isDateMayor(holiday.computedDate, TODAY)) {
+            printedToday.current = true;
             return <li className="py-2 px-4 bg-teal-100">
                 <p className="text-center">👉 Hoy 👈</p>
             </li>;

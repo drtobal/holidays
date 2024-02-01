@@ -2,10 +2,11 @@
 
 import { AvailableYear, Holiday } from "@/types";
 import HolidayList from "./../components/holidays-list";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getDates, getLeftDays, getLeftDaysLabel, getWeekDays } from "@/util/util";
 import { DEFAULT_YEAR, TODAY } from "@/constants";
 import Footer from "./../components/footer";
+import Months from "./../components/months";
 import { formatDistanceToNowStrict } from "date-fns";
 import { es as locale } from 'date-fns/locale/es';
 
@@ -20,15 +21,20 @@ export default function Home(props: Props) {
 
   const [weekDays, setWeekDays] = useState<Holiday[]>([]);
 
-  const setUp = async (): Promise<void> => {
-    const days = await getDates(props.year | DEFAULT_YEAR);
-    const leftDays = getLeftDays(days, TODAY);
-    setHolidays(days);
-    setLeftDays(leftDays);
-    setWeekDays(getWeekDays(leftDays));
-  };
+  const initialized = useRef<boolean>(false);
 
-  setUp();
+  useEffect(() => {
+    (async (): Promise<void> => {
+      if (!initialized.current) {
+        initialized.current = true;
+        const days = await getDates(props.year | DEFAULT_YEAR);
+        const leftDays = getLeftDays(days, TODAY);
+        setHolidays(days);
+        setLeftDays(leftDays);
+        setWeekDays(getWeekDays(leftDays));
+      }
+    })();
+  }, []);
 
   return (
     <>
@@ -50,8 +56,8 @@ export default function Home(props: Props) {
               <p className="mb-3 text-sm">(Aplican a un grupo de personas o región)</p>
             </HolidayList>
           </div>
-          <div>
-            asdfasdf
+          <div className="flex flex-col">
+            <Months holidays={holidays} />
           </div>
         </div>
       </div>
