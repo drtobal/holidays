@@ -32,20 +32,29 @@ export default function Home(props: Props) {
 
   return (
     <>
-      <HolidayList holidays={holidays.filter(h => !h.location)}>
+      <div className="container mx-auto">
         <h1 className="mt-5">Feriados de Chile, {props.year | DEFAULT_YEAR}</h1>
         <p className="mb-3 text-sm">{getLeftDaysLabel(leftDays, weekDays)}</p>
-        {leftDays.length > 0 ? <p className="mb-3 text-sm">
-          Próximo feriado: <span className="font-bold">{leftDays[0].name}</span>
-          {leftDays[0].computedDate ?
-            <>, dentro de {formatDistanceToNowStrict(leftDays[0].computedDate, { locale, unit: 'day' })}</> : <></>}
-        </p> : <></>}
-      </HolidayList>
+        <div className="grid grid-cols-2 gap-4 mt-4">
+          <div>
+            <HolidayList holidays={holidays.filter(h => !h.location)}>
+              {leftDays.length > 0 ? <p className="mb-3 text-sm">
+                Próximo feriado: <span className="font-bold">{leftDays[0].name}</span>
+                {leftDays[0].computedDate ?
+                  <>, dentro de {formatDistanceToNowStrict(leftDays[0].computedDate, { locale, unit: 'day' })}</> : <></>}
+              </p> : <></>}
+            </HolidayList>
 
-      <HolidayList holidays={holidays.filter(h => h.location)}>
-        <h1 className="mt-5">Feriados específicos</h1>
-        <p className="mb-3 text-sm">(Aplican a un grupo de personas o región)</p>
-      </HolidayList>
+            <HolidayList holidays={holidays.filter(h => h.location)}>
+              <h1 className="mt-5">Feriados específicos</h1>
+              <p className="mb-3 text-sm">(Aplican a un grupo de personas o región)</p>
+            </HolidayList>
+          </div>
+          <div>
+            asdfasdf
+          </div>
+        </div>
+      </div>
 
       <Footer />
     </>

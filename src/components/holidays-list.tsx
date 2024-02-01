@@ -34,7 +34,7 @@ export default function HolidayList(props: Props) {
         return <p className="font-semibold text-sm">{holiday.date}</p>;
     };
 
-    return <div className="max-w-md mx-auto p-4 my-4">
+    return <div className="max-w-md pt-0">
 
         {props.children ? props.children : <></>}
 
