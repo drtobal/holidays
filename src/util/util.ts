@@ -46,6 +46,10 @@ export const isWeekDay = (holiday: Holiday): boolean => {
 
 /** returns the label for holidays left in the year */
 export const getLeftDaysLabel = (leftDays: Holiday[], weekDays: Holiday[], year: number): string => {
+    if (typeof window === 'undefined') {
+        return ' ';
+    }
+
     const isSameYear = year === CURRENT_YEAR;
     const leftDaysCount = leftDays.length;
     const weekDaysCount = weekDays.length;

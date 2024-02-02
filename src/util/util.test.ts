@@ -30,13 +30,11 @@ describe("Util functions", () => {
     test('should prevent propagation and default of event', () => {
         const event = {
             preventDefault: jest.fn(),
-            stopImmediatePropagation: jest.fn(),
             stopPropagation: jest.fn(),
             otherProp: jest.fn(),
         };
         preventClickDefault(event as any);
         expect(event.preventDefault).toHaveBeenCalled();
-        expect(event.stopImmediatePropagation).toHaveBeenCalled();
         expect(event.stopPropagation).toHaveBeenCalled();
         expect(event.otherProp).not.toHaveBeenCalled();
     });

@@ -26,6 +26,9 @@ export default function Home(props: Props = { year: CURRENT_YEAR, holidays: [] }
 
   /** returns the label for next coming holiday */
   const nextHoliday = (): ReachChild => {
+    if (typeof window === 'undefined') {
+      return <span className="mb-3 text-sm">&nbsp;</span>;
+    }
     if (leftDays.length > 0 && props.year === CURRENT_YEAR) {
       return <span className="mb-3 text-sm">
         Próximo feriado: <span className="font-bold">{leftDays[0].name}</span>

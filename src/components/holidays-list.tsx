@@ -18,7 +18,7 @@ export default function HolidayList(props: Props) {
 
     /** reutrns the label for "today" indicator */
     const today = (holiday: Holiday): ReachChild => {
-        if (props.year === CURRENT_YEAR && !printedToday && holiday.computedDate && isDayMayor(holiday.computedDate, TODAY)) {
+        if (typeof window !== 'undefined' && props.year === CURRENT_YEAR && !printedToday && holiday.computedDate && isDayMayor(holiday.computedDate, TODAY)) {
             printedToday = true;
             return <div className="py-2 px-4 bg-teal-100">
                 <p className="text-center">👉 Hoy 👈</p>
