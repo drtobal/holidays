@@ -2,7 +2,7 @@
 
 import { AvailableYear, Holiday, ReachChild } from "@/types";
 import HolidayList from "./../components/holidays-list";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { getLeftDays, getLeftDaysLabel, getWeekDays } from "@/util/util";
 import { CURRENT_YEAR } from "@/constants";
 import Footer from "./../components/footer";
@@ -19,26 +19,10 @@ type Props = {
 /** main component of the holidays page, contains all child components of the page */
 export default function Home(props: Props = { year: CURRENT_YEAR, holidays: [] }) {
   /** left holidays for this year, not including localized holidays */
-  const [leftDays, setLeftDays] = useState<Holiday[]>([]);
+  const [leftDays, setLeftDays] = useState<Holiday[]>(getLeftDays(props.holidays, parse(`${props.year || CURRENT_YEAR}-01-01`, 'yyyy-M-dd', new Date())));
 
   /** left holidays that are weekdays */
-  const [weekDays, setWeekDays] = useState<Holiday[]>([]);
-
-  /** check if use effect function has been called */
-  const initialized = useRef<boolean>(false);
-
-  /** apply data transforms at component creation */
-  useEffect(() => {
-    (async (): Promise<void> => {
-      if (!initialized.current) {
-        initialized.current = true;
-        const year = props.year || CURRENT_YEAR;
-        const leftDays = getLeftDays(props.holidays, parse(`${year}-01-01`, 'yyyy-M-dd', new Date()));
-        setLeftDays(leftDays);
-        setWeekDays(getWeekDays(leftDays));
-      }
-    })();
-  }, []);
+  const [weekDays, setWeekDays] = useState<Holiday[]>(getWeekDays(leftDays));
 
   /** returns the label for next coming holiday */
   const nextHoliday = (): ReachChild => {
