@@ -29,7 +29,7 @@ export default function HolidayList(props: Props) {
         if (holiday.computedDate) {
             return <>
                 <p className="font-semibold">{format(holiday.computedDate, 'EEEE d \'de\' MMMM', { locale })}</p>
-                {isDayMayor(holiday.computedDate, TODAY) ? <p className="text-sm">Dentro de&nbsp;
+                {typeof window !== 'undefined' && isDayMayor(holiday.computedDate, TODAY) ? <p className="text-sm">Dentro de&nbsp;
                     {formatDistanceToNowStrict(holiday.computedDate, { locale, unit: 'day' })}
                 </p> : <></>}
             </>;
