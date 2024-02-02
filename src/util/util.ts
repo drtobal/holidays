@@ -73,9 +73,8 @@ export const getLeftDaysLabel = (leftDays: Holiday[], weekDays: Holiday[], year:
 }
 
 /** prevent and stop propagation of mouse event */
-export const preventClickDefault = (event: MouseEvent): void => {
+export const preventClickDefault = (event: React.MouseEvent): void => {
     event.preventDefault();
-    event.stopImmediatePropagation && event.stopImmediatePropagation();
     event.stopPropagation();
 };
 
