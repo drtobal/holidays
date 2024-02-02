@@ -14,11 +14,15 @@ type Props = {
     year: number;
 }
 
+/** print list of months in calendar format to view de holidays */
 export default function Months(props: Props) {
+    /** months to display */
     const [months, setMonths] = useState<Date[]>(getMonthsDates(MONTHS, props.year || CURRENT_YEAR));
 
+    /** displays a dialog with the detail of selected holiday */
     const [activeHoliday, setActiveHoliday] = useState<Holiday | null>(null);
 
+    /** returns the classname for holiday html element in calendar */
     const getDayClassName = (date: CalendarDate, month: number): string => {
         const className: string[] = ['w-5 h-5 flex justify-center items-center rounded-full'];
         if (date.date.getMonth() === month) {
@@ -39,12 +43,14 @@ export default function Months(props: Props) {
         return className.join(' ');
     }
 
+    /** displays the holiday dialog */
     const displayHoliday = (date: CalendarDate): void => {
         if (date.holiday) {
             setActiveHoliday(date.holiday);
         }
     }
 
+    /** hide the holiday dialog */
     const hideHoliday = (): void => {
         setActiveHoliday(null);
     }

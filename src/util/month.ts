@@ -4,12 +4,15 @@ import { parse, add, isSameDay } from "date-fns";
 import { CalendarDate, Holiday } from "@/types";
 import { isDateMayor } from "./util";
 
+/** months to display in calendar section */
 export const MONTHS: Month[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
+/** get all months as date object as first day of month */
 export const getMonthsDates = (months: Month[], year: number): Date[] => {
     return months.map(month => parse(`${year}-${month + 1}-01`, 'yyyy-M-dd', new Date()));
-}
+};
 
+/** get all dates in calendar, can include previous and next month days to fill days from monday to sunday */
 export const getMonthCalendar = (month: Date, holidays: Holiday[], today: Date): CalendarDate[][] => {
     const dates: CalendarDate[][] = [];
     const monthNumber: number = month.getMonth();
@@ -47,6 +50,7 @@ export const getMonthCalendar = (month: Date, holidays: Holiday[], today: Date):
     return dates;
 };
 
+/** find a holiday for given date, or undefined */
 export const getHolidayFromDate = (date: Date, holidays: Holiday[]): Holiday | undefined => {
     return holidays.find(holiday => holiday.computedDate && isSameDay(date, holiday.computedDate));
-}
+};

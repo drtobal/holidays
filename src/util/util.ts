@@ -1,18 +1,9 @@
 import { parse, isValid } from "date-fns";
-import { Holiday, RawHoliday, AvailableYear } from "@/types";
+import { Holiday, RawHoliday } from "@/types";
 import { CURRENT_YEAR } from "@/constants";
 
-// implement 2025
-export const getDates = async (year: AvailableYear = 2024): Promise<Holiday[]> => {
-    switch (year) {
-        case 2024:
-            return parseDates((await import('./../data/2024.json')).default as RawHoliday[]);
-        case 2025:
-            return parseDates((await import('./../data/2025.json')).default as RawHoliday[]);
-    }
-};
-
-export const parseDates = (dates: RawHoliday[]): Holiday[] => {
+/** parse holidays dates */
+export const parseHolidays = (dates: RawHoliday[]): Holiday[] => {
     return dates.map(d => {
         if (d.date) {
             const date = parse(d.date, 'yyyy-MM-dd', new Date());
@@ -24,10 +15,12 @@ export const parseDates = (dates: RawHoliday[]): Holiday[] => {
     });
 }
 
+/** check if date a is mayor than date b */
 export const isDateMayor = (a: Date, b: Date): boolean => {
     return a.valueOf() > b.valueOf();
 }
 
+/** check how many holidays are in the future of date */
 export const getLeftDays = (holidays: Holiday[], date: Date): Holiday[] => {
     const year = date.getFullYear();
     return holidays.filter(holiday => {
@@ -41,14 +34,17 @@ export const getLeftDays = (holidays: Holiday[], date: Date): Holiday[] => {
     });
 }
 
+/** filter holidays that are weekdays (m, t, w, t, f) */
 export const getWeekDays = (holidays: Holiday[]): Holiday[] => {
     return holidays.filter(isWeekDay);
 }
 
+/** check if given holiday is weekday (m, t, w, t, f)  */
 export const isWeekDay = (holiday: Holiday): boolean => {
     return !!(holiday.computedDate && holiday.computedDate.getDay() % 6 !== 0);
 }
 
+/** returns the label for holidays left in the year */
 export const getLeftDaysLabel = (leftDays: Holiday[], weekDays: Holiday[], year: number): string => {
     const isSameYear = year === CURRENT_YEAR;
     const leftDaysCount = leftDays.length;
@@ -76,8 +72,26 @@ export const getLeftDaysLabel = (leftDays: Holiday[], weekDays: Holiday[], year:
     return text;
 }
 
+/** prevent and stop propagation of mouse event */
 export const preventClickDefault = (event: MouseEvent): void => {
     event.preventDefault();
     event.stopImmediatePropagation && event.stopImmediatePropagation();
     event.stopPropagation();
-}
+};
+
+/** returns a label for holiday kind */
+export const getHolidayKindLabel = (holiday: Holiday): string => {
+    if (holiday.location) {
+        return holiday.location;
+    }
+
+    switch (holiday.type) {
+        case 'civil':
+            return 'Civil';
+        case 'religious':
+            return 'Religioso';
+        default:
+        case 'location':
+            return '';
+    }
+};

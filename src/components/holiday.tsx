@@ -1,17 +1,18 @@
 'use client'
 
 import { Holiday, ReachChild } from "@/types";
-import { getHolidayKindLabel } from "@/util/labels";
 import { format, formatDistanceToNowStrict } from "date-fns";
 import { es as locale } from "date-fns/locale/es";
-import { isWeekDay, isDateMayor } from "@/util/util";
+import { isWeekDay, isDateMayor, getHolidayKindLabel } from "@/util/util";
 import { TODAY } from "@/constants";
 
 type Props = {
     holiday: Holiday,
 };
 
+/** displays a single holiday */
 export default function HolidayList(props: Props) {
+    /** all labels for given holiday */
     const labels = (holiday: Holiday): ReachChild => {
         if (holiday.labels && holiday.labels.length > 0) {
             return holiday.labels.map((label, k) => {
@@ -23,6 +24,7 @@ export default function HolidayList(props: Props) {
         return <></>;
     };
 
+    /** date object of the holiday, or raw date string */
     const date = (holiday: Holiday): ReachChild => {
         if (holiday.computedDate) {
             return <>

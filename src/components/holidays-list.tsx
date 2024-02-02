@@ -12,9 +12,11 @@ type Props = {
     year: AvailableYear,
 };
 
+/** displays a holidays list */
 export default function HolidayList(props: Props) {
     let printedToday = false;
 
+    /** reutrns the label for "today" indicator */
     const today = (holiday: Holiday): ReachChild => {
         if (props.year === CURRENT_YEAR && !printedToday && holiday.computedDate && isDateMayor(holiday.computedDate, TODAY)) {
             printedToday = true;
