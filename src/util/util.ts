@@ -16,8 +16,8 @@ export const parseHolidays = (dates: RawHoliday[]): Holiday[] => {
 }
 
 /** check if date a is mayor than date b */
-export const isDateMayor = (a: Date, b: Date): boolean => {
-    return a.valueOf() > b.valueOf();
+export const isDayMayor = (a: Date, b: Date): boolean => {
+    return (new Date(a.getFullYear(), a.getMonth(), a.getDate())).getTime() > (new Date(b.getFullYear(), b.getMonth(), b.getDate())).getTime();
 }
 
 /** check how many holidays are in the future of date */
@@ -26,7 +26,7 @@ export const getLeftDays = (holidays: Holiday[], date: Date): Holiday[] => {
     return holidays.filter(holiday => {
         if (!holiday.computedDate || holiday.location ||
             holiday.computedDate.getFullYear() !== year ||
-            !isDateMayor(holiday.computedDate, date)) {
+            !isDayMayor(holiday.computedDate, date)) {
             return false;
         }
 

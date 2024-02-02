@@ -1,7 +1,7 @@
 'use client'
 
 import { Holiday, ReachChild } from "@/types";
-import { isDateMayor } from "@/util/util";
+import { isDayMayor } from "@/util/util";
 import { CURRENT_YEAR, TODAY } from "@/constants";
 import HolidayComponent from "./holiday";
 import { AvailableYear } from "@/types";
@@ -18,7 +18,7 @@ export default function HolidayList(props: Props) {
 
     /** reutrns the label for "today" indicator */
     const today = (holiday: Holiday): ReachChild => {
-        if (props.year === CURRENT_YEAR && !printedToday && holiday.computedDate && isDateMayor(holiday.computedDate, TODAY)) {
+        if (props.year === CURRENT_YEAR && !printedToday && holiday.computedDate && isDayMayor(holiday.computedDate, TODAY)) {
             printedToday = true;
             return <div className="py-2 px-4 bg-teal-100">
                 <p className="text-center">👉 Hoy 👈</p>

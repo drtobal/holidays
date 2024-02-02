@@ -3,7 +3,7 @@
 import { Holiday, ReachChild } from "@/types";
 import { format, formatDistanceToNowStrict } from "date-fns";
 import { es as locale } from "date-fns/locale/es";
-import { isWeekDay, isDateMayor, getHolidayKindLabel } from "@/util/util";
+import { isWeekDay, isDayMayor, getHolidayKindLabel } from "@/util/util";
 import { TODAY } from "@/constants";
 
 type Props = {
@@ -29,7 +29,7 @@ export default function HolidayList(props: Props) {
         if (holiday.computedDate) {
             return <>
                 <p className="font-semibold">{format(holiday.computedDate, 'EEEE d \'de\' MMMM', { locale })}</p>
-                {isDateMayor(holiday.computedDate, TODAY) ? <p className="text-sm">Dentro de&nbsp;
+                {isDayMayor(holiday.computedDate, TODAY) ? <p className="text-sm">Dentro de&nbsp;
                     {formatDistanceToNowStrict(holiday.computedDate, { locale, unit: 'day' })}
                 </p> : <></>}
             </>;

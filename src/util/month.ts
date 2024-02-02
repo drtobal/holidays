@@ -2,7 +2,7 @@ import { Month } from "../../node_modules/date-fns/types";
 import { previousMonday } from "../../node_modules/date-fns/previousMonday";
 import { parse, add, isSameDay } from "date-fns";
 import { CalendarDate, Holiday } from "@/types";
-import { isDateMayor } from "./util";
+import { isDayMayor } from "./util";
 
 /** months to display in calendar section */
 export const MONTHS: Month[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
@@ -17,7 +17,7 @@ export const getMonthCalendar = (month: Date, holidays: Holiday[], today: Date):
     const dates: CalendarDate[][] = [];
     const monthNumber: number = month.getMonth();
     let currentDate: Date = parse(`${month.getFullYear()}-${month.getMonth() + 1}-01`, 'yyyy-M-dd', new Date());
-    let isPast: boolean = false;
+    let isPast: boolean = true;
 
     if (currentDate.getDay() !== 1) { // print from monday
         currentDate = previousMonday(currentDate);
@@ -32,8 +32,8 @@ export const getMonthCalendar = (month: Date, holidays: Holiday[], today: Date):
             datesLength = dates.length;
         }
 
-        if (!isPast) {
-            isPast = isDateMayor(today, currentDate);
+        if (isPast) {
+            isPast = isDayMayor(today, currentDate);
         }
 
         const holiday = getHolidayFromDate(currentDate, holidays);
