@@ -39,9 +39,6 @@
     },
     {
         "name": "Elecciones Primarias Alcaldes y Gobernadores",
-        "labels": [
-            "Por Confirmar"
-        ],
         "type": "civil",
         "law": "Ley 18.700, Ley 19.973",
         "date": "2024-06-09",
@@ -101,7 +98,7 @@
         "name": "Elecciones Municipales, Consejeros Regionales y Gobernadores Regionales",
         "type": "civil",
         "law": "Ley 18.700, Ley 19.973",
-        "date": "2024-10-12",
+        "date": "2024-10-27",
         "inalienable": true
     },
     {
@@ -118,9 +115,6 @@
     },
     {
         "name": "Segunda Vuelta Elección Gobernadores Regionales",
-        "labels": [
-            "Por Confirmar"
-        ],
         "type": "civil",
         "law": "Ley 18.700, Ley 19.973",
         "date": "2024-11-24",
