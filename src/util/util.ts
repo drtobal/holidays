@@ -1,4 +1,4 @@
-import { parse, isValid } from "date-fns";
+import { parse, isValid, startOfDay } from "date-fns";
 import { Holiday, RawHoliday } from "@/types";
 import { CURRENT_YEAR } from "@/constants";
 
@@ -17,7 +17,7 @@ export const parseHolidays = (dates: RawHoliday[]): Holiday[] => {
 
 /** check if date a is mayor than date b */
 export const isDayMayor = (a: Date, b: Date): boolean => {
-    return (new Date(a.getFullYear(), a.getMonth(), a.getDate())).getTime() > (new Date(b.getFullYear(), b.getMonth(), b.getDate())).getTime();
+    return startOfDay(a) > startOfDay(b);
 }
 
 /** check how many holidays are in the future of date */

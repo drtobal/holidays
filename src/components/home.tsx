@@ -7,7 +7,7 @@ import { getLeftDays, getLeftDaysLabel, getWeekDays } from "@/util/util";
 import { CURRENT_YEAR } from "@/constants";
 import Footer from "./../components/footer";
 import Months from "./../components/months";
-import { formatDistanceToNowStrict, parse } from "date-fns";
+import { formatDistanceToNowStrict } from "date-fns";
 import { es as locale } from "date-fns/locale/es";
 import Link from "next/link";
 
@@ -19,10 +19,10 @@ type Props = {
 /** main component of the holidays page, contains all child components of the page */
 export default function Home(props: Props = { year: CURRENT_YEAR, holidays: [] }) {
   /** left holidays for this year, not including localized holidays */
-  const [leftDays, setLeftDays] = useState<Holiday[]>(getLeftDays(props.holidays, parse(`${props.year || CURRENT_YEAR}-01-01`, 'yyyy-M-dd', new Date())));
+  const [leftDays] = useState<Holiday[]>(getLeftDays(props.holidays, new Date()));
 
   /** left holidays that are weekdays */
-  const [weekDays, setWeekDays] = useState<Holiday[]>(getWeekDays(leftDays));
+  const [weekDays] = useState<Holiday[]>(getWeekDays(leftDays));
 
   /** returns the label for next coming holiday */
   const nextHoliday = (): ReachChild => {
